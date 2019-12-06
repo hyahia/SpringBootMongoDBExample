@@ -34,47 +34,50 @@ public class PersonService {
 		List<Person> persons = personRepository.findAll();
 		System.out.println(persons);
 		return persons;
-		
+
 	}
-	
+
 	@GetMapping(value = "{name:[a-zA-Z\\s]+}")
-	private List<Person> getPersonsByLastName(@PathVariable("name") Optional<String> lastName) throws InterruptedException {
-		if(lastName.isPresent())
+	private List<Person> getPersonsByLastName(@PathVariable("name") Optional<String> lastName)
+			throws InterruptedException {
+		if (lastName.isPresent())
 			return personRepository.findByLastName(lastName.get());
 		return null;
 	}
-	
+
 	@GetMapping(value = "{contact:[\\d]+|.*@.*}")
-	private List<Person> getPersonsContactValue(@PathVariable("contact") Optional<String> contact) throws InterruptedException {
-		if(contact.isPresent())
+	private List<Person> getPersonsContactValue(@PathVariable("contact") Optional<String> contact)
+			throws InterruptedException {
+		if (contact.isPresent())
 			return personRepository.findByContactValue(contact.get());
 		return null;
 	}
-	
+
 	@PostMapping
-    public Person create(@RequestBody Person person){
+	public Person create(@RequestBody Person person) {
 		List<Address> addresses = person.getAddresses();
 		List<Address> savedAddresses = null;
-		
-		if(!CollectionUtils.isEmpty(addresses)) {
+
+		if (!CollectionUtils.isEmpty(addresses)) {
 			savedAddresses = addressRepository.saveAll(addresses);
 			person.setAddresses(savedAddresses);
 		}
-		
-        return personRepository.save(person);
-    } 
+
+		return personRepository.save(person);
+	}
 
 	@PutMapping
-    public Person update(@RequestBody Person person){
-        return personRepository.save(person);
-    }
-	
+	public Person update(@RequestBody Person person) {
+		return personRepository.save(person);
+	}
+
 	@DeleteMapping
-    public void delete(@RequestBody Person person){
-         try {
+	public void delete(@RequestBody Person person) {
+		try {
 			personRepository.delete(person);
 		} catch (IllegalStateException e) {
-			throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, String.format("Person: {%s} cannot be found", person));
+			throw new HttpClientErrorException(HttpStatus.BAD_REQUEST,
+					String.format("Person: {%s} cannot be found", person));
 		}
-    }
+	}
 }
