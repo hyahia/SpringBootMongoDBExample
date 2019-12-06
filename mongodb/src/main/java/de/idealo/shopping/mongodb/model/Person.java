@@ -31,7 +31,7 @@ public class Person {
 	
 	// One-To-Many (Separate Documents)
 	@DBRef(lazy = true)
-    private List<Address> addresses;
+	private List<Address> addresses;
 	
 	// Many-To-Many (Via Middle Document "Person-Order-Product")
 	@DBRef
