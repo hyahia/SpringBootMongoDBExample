@@ -1,4 +1,4 @@
-package de.idealo.shopping.mongodb;
+package de.idealo.shopping.mongodb.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

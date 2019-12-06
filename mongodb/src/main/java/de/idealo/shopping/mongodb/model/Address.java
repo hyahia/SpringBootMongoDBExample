@@ -1,4 +1,4 @@
-package de.idealo.shopping.mongodb;
+package de.idealo.shopping.mongodb.model;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;

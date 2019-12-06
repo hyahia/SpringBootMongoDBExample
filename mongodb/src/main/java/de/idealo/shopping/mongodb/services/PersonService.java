@@ -1,4 +1,4 @@
-package de.idealo.shopping.mongodb;
+package de.idealo.shopping.mongodb.services;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,6 +15,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.HttpClientErrorException;
+
+import de.idealo.shopping.mongodb.model.Address;
+import de.idealo.shopping.mongodb.model.Person;
+import de.idealo.shopping.mongodb.repositories.AddressRepository;
+import de.idealo.shopping.mongodb.repositories.PersonRepository;
 
 @RestController
 @RequestMapping(value = "/persons")

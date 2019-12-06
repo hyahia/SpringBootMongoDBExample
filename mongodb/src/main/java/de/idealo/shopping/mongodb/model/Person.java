@@ -1,4 +1,4 @@
-package de.idealo.shopping.mongodb;
+package de.idealo.shopping.mongodb.model;
 
 import java.util.List;
 
@@ -29,8 +29,12 @@ public class Person {
 	// One-To-Many (Same Document)
 	private List<Contact> contacts;
 	
-	// One-To-Many (Separate Document)
+	// One-To-Many (Separate Documents)
 	@DBRef(lazy = true)
     private List<Address> addresses;
+	
+	// Many-To-Many (Via Middle Document "Person-Order-Product")
+	@DBRef
+	private List<Order> orders;
 
 }
