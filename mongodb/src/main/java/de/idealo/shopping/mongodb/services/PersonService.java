@@ -31,9 +31,7 @@ public class PersonService {
 
 	@GetMapping()
 	private List<Person> getPersons() throws InterruptedException {
-		List<Person> persons = personRepository.findAll();
-		System.out.println(persons);
-		return persons;
+		return personRepository.findAll();
 
 	}
 
@@ -76,7 +74,7 @@ public class PersonService {
 		try {
 			personRepository.delete(person);
 		} catch (IllegalStateException e) {
-			throw new HttpClientErrorException(HttpStatus.BAD_REQUEST,
+			throw new HttpClientErrorException(HttpStatus.NOT_FOUND,
 					String.format("Person: {%s} cannot be found", person));
 		}
 	}

@@ -32,8 +32,7 @@ public class OrderService {
 
 	@GetMapping()
 	private List<Order> getOrders() throws InterruptedException {
-		List<Order> orders = orderRepository.findAll();
-		return orders;
+		return orderRepository.findAll();
 
 	}
 
@@ -58,7 +57,7 @@ public class OrderService {
 		try {
 			orderRepository.delete(order);
 		} catch (IllegalStateException e) {
-			throw new HttpClientErrorException(HttpStatus.BAD_REQUEST,
+			throw new HttpClientErrorException(HttpStatus.NOT_FOUND,
 					String.format("Order: {%s} cannot be found", order));
 		}
 	}
