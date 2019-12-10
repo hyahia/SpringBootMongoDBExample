@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-//import de.idealo.shopping.mongodb.exceptions.ResourceNotFoundException;
 import de.idealo.shopping.mongodb.model.Order;
 import de.idealo.shopping.mongodb.repositories.OrderRepository;
 import de.idealo.shopping.mongodb.repositories.PersonRepository;
@@ -59,7 +58,7 @@ public class OrderService {
 		if (!dbOrder.isPresent()) {
 			throw new ResourceNotFoundException(String.format("Order: {%s} cannot be found", order));
 		}
-		
+
 		orderRepository.delete(order);
 	}
 }
