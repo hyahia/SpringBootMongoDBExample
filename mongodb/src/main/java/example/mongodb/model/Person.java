@@ -1,4 +1,4 @@
-package de.idealo.shopping.mongodb.model;
+package example.mongodb.model;
 
 import java.util.List;
 

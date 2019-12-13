@@ -1,4 +1,4 @@
-package de.idealo.shopping.mongodb.services;
+package example.mongodb.services;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import de.idealo.shopping.mongodb.model.Order;
-import de.idealo.shopping.mongodb.repositories.OrderRepository;
-import de.idealo.shopping.mongodb.repositories.PersonRepository;
-import de.idealo.shopping.mongodb.repositories.ProductRepository;
+import example.mongodb.model.Order;
+import example.mongodb.repositories.OrderRepository;
+import example.mongodb.repositories.PersonRepository;
+import example.mongodb.repositories.ProductRepository;
 
 @RestController
 @RequestMapping(value = "/orders")

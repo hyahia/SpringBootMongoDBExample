@@ -9,7 +9,7 @@
 		<version>2.2.1.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>de.idealo.shopping</groupId>
+	<groupId>example</groupId>
 	<artifactId>mongodb</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>mongodb</name>
