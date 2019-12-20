@@ -2,7 +2,6 @@ package example.mongodb.model;
 
 import java.util.List;
 
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -19,22 +18,13 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 @Document
-public class Person {
+public class Customer {
 
-	@Id private ObjectId id;
+	@Id private String id;
 
 	private String firstName;
 	private String lastName;
 
 	// One-To-Many (Same Document)
 	private List<Contact> contacts;
-	
-	// One-To-Many (Separate Documents)
-	@DBRef(lazy = true)
-	private List<Address> addresses;
-	
-	// Many-To-Many (Via Middle Document "Person-Order-Product")
-	@DBRef
-	private List<Order> orders;
-
 }

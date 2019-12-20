@@ -15,35 +15,25 @@ import org.springframework.web.bind.annotation.RestController;
 
 import example.mongodb.model.Order;
 import example.mongodb.repositories.OrderRepository;
-import example.mongodb.repositories.PersonRepository;
-import example.mongodb.repositories.ProductRepository;
 
 @RestController
 @RequestMapping(value = "/orders")
 public class OrderService {
-	@Autowired
 	OrderRepository orderRepository;
 
 	@Autowired
-	PersonRepository personRepository;
-
-	@Autowired
-	ProductRepository productRepository;
+	public OrderService(OrderRepository orderRepository) {
+		this.orderRepository = orderRepository;
+	}
 
 	@GetMapping()
-	private List<Order> getOrders() throws InterruptedException {
+	public List<Order> getOrders() {
 		return orderRepository.findAll();
 
 	}
 
 	@PostMapping
 	public Order create(@RequestBody Order order) {
-		if (order.getCustomer() != null)
-			order.setCustomer(personRepository.findById(order.getCustomer().getId().toString()).get());
-
-		if (order.getProduct() != null)
-			order.setProduct(productRepository.findById(order.getProduct().getId().toString()).get());
-
 		return orderRepository.save(order);
 	}
 
@@ -54,8 +44,7 @@ public class OrderService {
 
 	@DeleteMapping
 	public void delete(@RequestBody Order order) {
-		Optional<Order> dbOrder = orderRepository.findById(order.getId().toString());
-		if (!dbOrder.isPresent()) {
+		if (orderRepository.existsById(order.getId())) {
 			throw new ResourceNotFoundException(String.format("Order: {%s} cannot be found", order));
 		}
 

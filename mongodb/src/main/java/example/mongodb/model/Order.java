@@ -1,6 +1,5 @@
 package example.mongodb.model;
 
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -18,13 +17,11 @@ import lombok.ToString;
 @ToString
 @Document
 public class Order {
-	@Id private ObjectId id;
-	
-	@DBRef
-	private Person customer;
-	@DBRef
-	private Product product;
-	
+	@Id private String id;
 	private Integer quantity;
 
+	@DBRef
+	private Customer customer;
+	@DBRef
+	private Product product;
 }

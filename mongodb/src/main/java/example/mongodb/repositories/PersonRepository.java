@@ -8,15 +8,14 @@ import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-import example.mongodb.model.Person;
+import example.mongodb.model.Customer;
 
 @RepositoryRestResource(collectionResourceRel = "people", path = "people")
 @Qualifier("personRepository")
-public interface PersonRepository extends MongoRepository<Person, String> {
+public interface PersonRepository extends MongoRepository<Customer, String> {
 
-	List<Person> findByLastName(@Param("name") String name);
+	List<Customer> findByLastName(@Param("name") String name);
 	
 	@Query("{'contacts.contactValue': ?0}")
-	List<Person> findByContactValue(final String contactValue);
-
+	List<Customer> findByContactValue(final String contactValue);
 }

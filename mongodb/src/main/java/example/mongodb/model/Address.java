@@ -1,7 +1,9 @@
 package example.mongodb.model;
 
-import org.bson.types.ObjectId;
+import java.math.BigInteger;
+
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.AllArgsConstructor;
@@ -18,7 +20,10 @@ import lombok.ToString;
 @Document
 public class Address {
 
-	@Id private ObjectId id;
+	@Id
+	private String id;
+	@DBRef
+	private Customer customer;
 
 	private String country;
 	private String city;
